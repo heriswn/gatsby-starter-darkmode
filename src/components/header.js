@@ -1,8 +1,9 @@
-import * as React from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import moon from '../images/moon.png'
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, onUpdateTheme, theme }) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -14,6 +15,8 @@ const Header = ({ siteTitle }) => (
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
+        display: `flex`,
+        justifyContent: `space-between`,
       }}
     >
       <h1 style={{ margin: 0 }}>
@@ -27,6 +30,14 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <button onClick={onUpdateTheme} className="theme-switcher">
+        <img src={moon} alt="Theme" />
+        <span className="desktop-only">
+          {theme === 'dark' && 'Dark'}
+          {theme === 'light' && 'Light'}
+          {theme === 'sepia' && 'Sepia'}
+        </span>
+      </button>
     </div>
   </header>
 )
